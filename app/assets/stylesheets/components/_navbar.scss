@@ -1,6 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  padding-left: 20px;
+  padding-right: 20px;
+    a {
+        color: aliceblue!important;
+    }
 }
 
 .navbar-lewagon .navbar-collapse {
