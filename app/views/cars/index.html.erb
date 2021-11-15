@@ -1,0 +1,5 @@
+<h1>All our cars (<%= @cars.length %>) </h1>
+<%= link_to "add a car", car_path("new")%>
+<% @cars.each do |car| %>
+          <%= link_to car.name, car_path(car[:id]) %>
+            <% end %>
