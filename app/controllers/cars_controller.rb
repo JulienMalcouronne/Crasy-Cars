@@ -11,10 +11,9 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
-
     @car.users_id = current_user.id
     if @car.save
-      redirect_to cars_path, notice: 'car was successfully created.'
+      redirect_to @car, notice: 'car was successfully created.'
     else
       render :new
     end
@@ -31,7 +30,7 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:name, :category, :address, :price, :capacity, :features, :summary, :engine)
+    params.require(:car).permit(:name, :category, :address, :price, :capacity, :features, :summary, :engine, :photo)
   end
 
 end
