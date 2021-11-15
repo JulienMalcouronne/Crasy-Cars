@@ -1,1 +1,23 @@
 // Specific CSS for your home-page
+
+.background {
+  background-size: cover;
+  background-position: center;
+  background-image: url('https://images2.alphacoders.com/113/thumb-1920-1132805.jpg');
+  height: 100vh;
+  background-repeat: no-repeat;
+}
+
+.banner {
+  color: aliceblue;
+  margin-top: 100px;
+}
+
+.banner h1{
+  font-weight: bolder;
+}
+
+.banner p {
+  font-size: 32px;
+  font-weight: bolder;
+}
