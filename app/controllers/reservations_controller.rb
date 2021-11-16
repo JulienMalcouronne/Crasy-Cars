@@ -3,11 +3,13 @@ class ReservationsController < ApplicationController
    before_action :set_reservation, only: %i[destroy show]
   def new
     @reservation = Reservation.new
+    authorize @reservation
     @car = Car.find(params[:car_id])
   end
 
   def create
     @reservation = Reservation.new(reservation_params)
+    authorize @reservation
     @car = Car.find(params[:car_id])
     @reservation.car = @car
     @reservation.user = current_user
@@ -30,6 +32,7 @@ class ReservationsController < ApplicationController
 
   def set_reservation
     @reservation = Reservation.find(params[:id])
+    authorize @reservation
   end
 
   def reservation_params
