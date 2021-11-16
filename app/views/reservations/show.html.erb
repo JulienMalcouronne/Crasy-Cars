@@ -1,0 +1,9 @@
+<h2>Summary of your booking: </h2>
+
+<%= @reservation.car.name %>
+<p><%= @reservation.car.price %>€ per day</p>
+<% @reservation.total = (@reservation.end_date - @reservation.started_date) / 60000 %>
+<p>total day(s) of reservation: <%= @reservation.total %></p>
+<% @reservation.price = @reservation.car.price * @reservation.total %>
+
+<H1>Total price : <%= @reservation.price %>€</H1>

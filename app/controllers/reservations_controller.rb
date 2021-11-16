@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
 
-   before_action :set_reservation, only: %i[destroy]
+   before_action :set_reservation, only: %i[destroy show]
   def new
     @reservation = Reservation.new
     @car = Car.find(params[:car_id])
@@ -12,15 +12,18 @@ class ReservationsController < ApplicationController
     @reservation.car = @car
     @reservation.user = current_user
     if @reservation.save!
-      redirect_to car_path(@car), notice: 'Reservation was successfully created.'
+      redirect_to car_reservation_path(@car, @reservation), notice: 'Reservation was successfully created.'
     else
       render :new
     end
   end
 
   def destroy
-    @car.destroy
+    @reservation.destroy
     redirect_to cars_path
+  end
+
+  def show
   end
 
   private
