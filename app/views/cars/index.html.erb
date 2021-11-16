@@ -1,7 +1,10 @@
+
 <div class="container">
   <div class="title text-center mt-4 d-flex justify-content-between align-items-center">
     <h1>All our cars (<%= @cars.length %>)</h1>
+    <% if policy(Car).create? %>
     <div class="add-button"><%= link_to "+ Add a crazy car", car_path("new")%></div>
+    <% end %>
   </div>
   <div class="cards mt-3">
   <% @cars.each do |car| %>
@@ -12,6 +15,8 @@
             <div>
               <h2><%= link_to car.name, car_path(car[:id]) %></h2>
               <p><%= car.summary %></p>
+              <% if policy(car).edit? %>
+            <%= link_to "Update", edit_car_path(car) %>
             </div>
             <h2 class="card-trip-pricing"><%= car.price %>$/day</h2>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />

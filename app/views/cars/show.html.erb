@@ -1,6 +1,11 @@
-<%= link_to "All cars", cars_path %>
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @car.photo.key, height: 400, width: 800, crop: :fill %>')">
+<% if policy(Car).create? %>
+  <%= link_to "New Car", new_car_path %>
+<% end %>
+<% if @car.photo.attached? %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @car.photo.key, height: 400, width: 800, crop: :fill %>')">
+<% else %>
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path '', height: 400, width: 800, crop: :fill %>')">
+<% end %>
 <div class="container">
 <h1><%= @car.name %> </h1>
 </div>
@@ -11,6 +16,9 @@
             method: :delete,
             data: { confirm: "Are you sure?" } %>
 
-<%= link_to "Edit", edit_car_path %>
+<% if policy(@car).edit? %>
+  <%= link_to "Update", edit_car_path(@car) %>
+<% end %>
+
 
 <%= link_to "Book this car", new_car_reservation_path(@car) %>
