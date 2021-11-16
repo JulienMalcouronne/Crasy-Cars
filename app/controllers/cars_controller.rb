@@ -2,7 +2,7 @@ class CarsController < ApplicationController
   before_action :set_car, only: %i[show edit update destroy]
 
   def index
-    @cars = Car.all
+    @cars = policy_scope(Car)
   end
 
   def new
@@ -12,8 +12,9 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
-    @car.users_id = current_user.id
+    @car.user = current_user
     authorize @car
+    
     if @car.save
 
       redirect_to @car, notice: 'car was successfully created.'
@@ -36,7 +37,7 @@ class CarsController < ApplicationController
 
   def update
     @car.update(car_params)
-    redirect_to cars_path
+    redirect_to car_path(@car)
   end
 
   def search
