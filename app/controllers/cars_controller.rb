@@ -1,5 +1,5 @@
 class CarsController < ApplicationController
-  before_action :set_car, only: %i[show]
+  before_action :set_car, only: %i[show edit update destroy]
 
   def index
     @cars = Car.all
@@ -15,6 +15,7 @@ class CarsController < ApplicationController
     @car.users_id = current_user.id
     authorize @car
     if @car.save
+
       redirect_to @car, notice: 'car was successfully created.'
     else
       render :new
@@ -23,6 +24,23 @@ class CarsController < ApplicationController
 
   def show
 
+  end
+
+  def destroy
+    @car.destroy
+    redirect_to cars_path
+  end
+
+  def edit
+  end
+
+  def update
+    @car.update(car_params)
+    redirect_to cars_path
+  end
+
+  def search
+    @cars = Car.where("name LIKE '%#{params[:query]}%'")
   end
 
   private

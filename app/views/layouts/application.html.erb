@@ -11,13 +11,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body class="<%="home" if params[:action] == "home" %>">
    <%# <p class="notice"><%= notice %>
-       <%# <p class="alert"><%= alert %>
-        <%= render 'shared/navbar' %>
-  <%= render 'shared/flashes' %>
+    <%# <p class="alert"><%= alert %>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
     <%= yield %>
-
     <%# footer %>
     <div class="footer d-flex">
       <div class="footer-links">
