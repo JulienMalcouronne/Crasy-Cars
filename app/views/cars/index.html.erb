@@ -1,5 +1,7 @@
 <h1>All our cars (<%= @cars.length %>) </h1>
-<%= link_to "add a car", car_path("new")%>
+<% if policy(Car).create? %>
+  <%= link_to "New Car", new_car_path %>
+<% end %>
 <div class ="container">
 
 <div class="cards">

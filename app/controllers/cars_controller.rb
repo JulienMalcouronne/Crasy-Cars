@@ -7,11 +7,13 @@ class CarsController < ApplicationController
 
   def new
     @car = Car.new
+    authorize @car
   end
 
   def create
     @car = Car.new(car_params)
     @car.users_id = current_user.id
+    authorize @car
     if @car.save
       redirect_to @car, notice: 'car was successfully created.'
     else
@@ -27,6 +29,7 @@ class CarsController < ApplicationController
 
   def set_car
     @car = Car.find(params[:id])
+    authorize @car
   end
 
   def car_params
