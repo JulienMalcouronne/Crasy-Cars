@@ -1,0 +1,5 @@
+<%= simple_form_for [@car, @reservation] do |f| %>
+  <%= f.input :started_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.submit %>
+<% end %>

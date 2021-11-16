@@ -5,3 +5,12 @@
 <h1><%= @car.name %> </h1>
 </div>
 </div>
+
+<%= link_to "Remove",
+            car_path(@car),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+
+<%= link_to "Edit", edit_car_path %>
+
+<%= link_to "Book this car", new_car_reservation_path(@car) %>
