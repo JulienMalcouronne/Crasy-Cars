@@ -1,11 +1,6 @@
 // Specific CSS for your home-page
-
-.background {
-  background-size: cover;
-  background-position: center;
-  background-image: url('https://images2.alphacoders.com/113/thumb-1920-1132805.jpg');
-  height: 100vh;
-  background-repeat: no-repeat;
+.container {
+  height: 80vh;
 }
 
 .banner {
@@ -20,4 +15,23 @@
 .banner p {
   font-size: 32px;
   font-weight: bolder;
+}
+
+.input-home {
+  width: 400px;
+  padding: 10px;
+  margin-right: 0px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-style: none;
+}
+
+
+
+.home {
+  background-image: url('https://images2.alphacoders.com/113/thumb-1920-1132805.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-repeat: no-repeat;
 }

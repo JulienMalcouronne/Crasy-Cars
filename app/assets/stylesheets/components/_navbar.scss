@@ -2,6 +2,7 @@
   justify-content: space-between;
   padding-left: 20px;
   padding-right: 20px;
+  background-color: #0F1D2F;
     a {
         color: aliceblue!important;
     }
@@ -13,4 +14,12 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.home .navbar-lewagon{
+  background-color: transparent;
+}
+
+.company {
+  letter-spacing: -6px;
 }

@@ -1,0 +1,15 @@
+.button-home {
+  width: 150px;
+  color: aliceblue;
+  padding: 10px;
+  background: #0F1D2F;
+  transition: 0.3s ease;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-style: none;
+}
+
+.button-home:hover {
+  background: #264977;
+  color: white;
+}
