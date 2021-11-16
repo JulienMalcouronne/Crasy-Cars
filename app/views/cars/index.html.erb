@@ -10,7 +10,7 @@
       <div class="card-trip" >
         <% if car.photo.attached?%>
           <img src="<%= cl_image_path car.photo.key, height: 300 %>" alt="">
-        <% end %>
+
         <div class="card-trip-infos">
           <div>
             <h2><%= link_to car.name, car_path(car[:id]) %></h2>
@@ -19,6 +19,7 @@
           <h2 class="card-trip-pricing"><%= car.price %>$/day</h2>
           <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
         </div>
+        <% end %>
       </div>
     <% end %>
   </div>
