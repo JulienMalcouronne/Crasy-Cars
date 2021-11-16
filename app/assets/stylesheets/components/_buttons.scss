@@ -13,3 +13,18 @@
   background: #264977;
   color: white;
 }
+
+.add-button {
+  a {
+    font-style: none;
+    color: aliceblue;
+    padding: 20px;
+    border-radius: 20px;
+    background: #0F1D2F;
+    transition: background 0.3s ease;
+  }
+
+  a:hover {
+    background: #264977;
+  }
+}
