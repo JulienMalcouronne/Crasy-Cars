@@ -1,6 +1,6 @@
 <h1>Hello <%= @user.first_name %></h1>
-
-<h2>find bellow all your reservations :</h2>
+<br>
+<h2>Find bellow all your reservations:</h2>
 
 <ul>
 <% @user.reservations.each do |reservation| %>
@@ -12,4 +12,14 @@
               data: { confirm: "Are you sure?" } %>
     </li>
 <% end  %>
+</ul>
+
+<h2>Find bellow all your cars:</h2>
+
+<ul>
+<% @user.cars.each do |car| %>
+<% if car.photo.attached?%>
+      <li> <%= link_to car.name, car_path(car[:id]) %></li>
+    <% end %>
+  <% end %>
 </ul>
