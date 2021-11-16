@@ -1,18 +1,36 @@
-<%= simple_form_for(@car) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-    <%= f.label :category %>
-  <%= f.text_field :category %>
-    <%= f.label :address %>
-  <%= f.text_field :address %>
-    <%= f.label :features %>
-  <%= f.text_field :features %>
-    <%= f.label :summary %>
-  <%= f.text_field :summary %>
-    <%= f.label :engine %>
-  <%= f.text_field :engine %>
-    <%= f.label :price %>
-  <%= f.number_field :price %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
-<% end %>
+<div class="form d-flex">
+  <%= simple_form_for(@car) do |f| %>
+    <div class="m-2" style="color: aliceblue;">
+      <div><%= f.label :name %></div>
+      <%= f.text_field :name %>
+    </div>
+    <div class="m-2" style="color: aliceblue;">
+      <div><%= f.label :category %></div>
+      <%= f.text_field :category %>
+    </div>
+    <div class="m-2" style="color: aliceblue;">
+      <div><%= f.label :address %></div>
+      <%= f.text_field :address %>
+    </div>
+    <div class="m-2" style="color: aliceblue;">
+      <div><%= f.label :features %></div>
+      <%= f.text_field :features %>
+    </div>
+    <div class="m-2" style="color: aliceblue;">
+      <div><%= f.label :summary %></div>
+      <%= f.text_field :summary %>
+    </div>
+    <div class="m-2" style="color: aliceblue;">
+      <div><%= f.label :engine %></div>
+      <%= f.text_field :engine %>
+    </div>
+    <div class="m-2" style="color: aliceblue;">
+      <div><%= f.label :price %></div>
+      <%= f.number_field :price %>
+    </div>
+    <div class="m-2" style="color: aliceblue;">
+      <div><%= f.input :photo, as: :file %></div>
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
