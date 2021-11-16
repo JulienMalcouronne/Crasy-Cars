@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     end
   end
   resources :reservations, only: [:destroy]
+  get "/dashboard", to: "pages#dashboard"
 end

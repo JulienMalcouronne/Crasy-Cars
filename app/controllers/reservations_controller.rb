@@ -11,7 +11,6 @@ class ReservationsController < ApplicationController
     @car = Car.find(params[:car_id])
     @reservation.car = @car
     @reservation.user = current_user
-    raise
     if @reservation.save!
       redirect_to car_reservation_path(@car, @reservation), notice: 'Reservation was successfully created.'
     else
