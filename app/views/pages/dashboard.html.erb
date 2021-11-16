@@ -1,0 +1,25 @@
+<h1>Hello <%= @user.first_name %></h1>
+<br>
+<h2>Find bellow all your reservations:</h2>
+
+<ul>
+<% @user.reservations.each do |reservation| %>
+    <li>
+    <%= link_to reservation.car.name, car_reservation_path(reservation.car, reservation) %>
+     <%= link_to "Remove",
+              reservation_path(reservation),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+    </li>
+<% end  %>
+</ul>
+
+<h2>Find bellow all your cars:</h2>
+
+<ul>
+<% @user.cars.each do |car| %>
+<% if car.photo.attached?%>
+      <li> <%= link_to car.name, car_path(car[:id]) %></li>
+    <% end %>
+  <% end %>
+</ul>
