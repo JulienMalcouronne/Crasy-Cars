@@ -18,12 +18,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 50px;
+  padding-left: 0px;
 }
 
-.allcards {
-  max-height: 70vh;
-  overflow: scroll;
-}
+// .allcards {
+//   max-height: 80vh;
+//   overflow: scroll;
+// }
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
@@ -92,7 +93,8 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
-  background-color: aliceblue;
+  background-color: #0F1D2F;
+  color: aliceblue;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -102,4 +104,14 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-trip-infos h2, p {
+  margin-top: 2px;
+}
+
+.card-summary {
+  max-width: 190px;
+  max-height: 35px;
+  overflow: hidden;
 }

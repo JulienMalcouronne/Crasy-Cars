@@ -41,7 +41,21 @@
   flex-direction: column;
   height: 100%;
   width: 380px;
+
   justify-content: center;
+  background-color: #0F1D2F;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.card-product h1{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.container .title{
+  font-weight: bold;
 }
 
 
