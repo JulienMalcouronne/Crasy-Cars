@@ -1,5 +1,12 @@
-<%= simple_form_for [@car, @reservation] do |f| %>
-  <%= f.input :started_date, as: :date %>
-  <%= f.input :end_date, as: :date %>
-  <%= f.submit %>
-<% end %>
+<div class="container content-wrapper pt-5 d-flex justify-content-center">
+  <div class="formz">
+    <h1>Book your Crazy Vehicule </h1>
+      <div class="reservationz">
+        <%=simple_form_for [@car, @reservation] do |f| %>
+          <%= f.input :started_date, as: :date %>
+          <%= f.input :end_date, as: :date %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+  </div>
+</div>

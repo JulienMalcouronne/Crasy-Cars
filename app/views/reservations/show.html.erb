@@ -1,9 +1,13 @@
-<h2>Summary of your booking: </h2>
+<div class="container content-wrapper pt-5 d-flex justify-content-center">
+  <div class="sum">
+    <h2>Summary of your booking: </h2>
 
-<%= @reservation.car.name %>
-<p><%= @reservation.car.price %>€ per day</p>
-<% @reservation.total = (@reservation.end_date - @reservation.started_date) / 60000 %>
-<p>total day(s) of reservation: <%= @reservation.total %></p>
-<% @reservation.price = @reservation.car.price * @reservation.total %>
+    <h2><%= @reservation.car.name %></h2>
+    <h4><%= @reservation.car.price %>€ per day</h4>
+    <% @reservation.total = (@reservation.end_date - @reservation.started_date) / 60000 %>
+    <h4>total day(s) of reservation: <%= @reservation.total %></h4>
+    <% @reservation.price = @reservation.car.price * @reservation.total %>
 
-<H1>Total price : <%= @reservation.price %>€</H1>
+    <H1>Total price : <%= @reservation.price %>€</H1>
+  </div>
+</div>
