@@ -40,6 +40,17 @@
   width: 380px;
   background-color: #0F1D2F;
   justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.card-product h1{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.container .title{
+  font-weight: bold;
 }
 
 

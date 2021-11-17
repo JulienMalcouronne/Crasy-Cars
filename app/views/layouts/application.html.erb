@@ -11,13 +11,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body class="<%="home" if params[:action] == "home" %>">
-   <%# <p class="notice"><%= notice %>
-    <%# <p class="alert"><%= alert %>
+  <body class="<%="home" if params[:action] == "home" %>" >
+    <div class="content-wrapper">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
-    <%# footer %>
+      <%= yield %>
+      <%# footer %>
     <div class="footer d-flex">
       <div class="footer-links">
         <a href="#"><i class="fab fa-github"></i></a>
@@ -29,6 +28,7 @@
       <div class="footer-copyright">
         This footer is made with <i class="fas fa-heart"></i> by Festivapp
       </div>
+    </div>
     </div>
   </body>
 </html>
