@@ -1,55 +1,51 @@
-<% if policy(Car).create? %>
-  <%= link_to "New Car", new_car_path %>
-<% end %>
-
 <div class="container">
-  <%= link_to "All cars", cars_path %>
-    <div class="card-product" >
+      <div class="card-product" >
         <%= image_tag cl_image_path @car.photo.key, height: 300 %>
             <br>
             <div class="text">
             <h1><%= @car.name %> </h1>
               <div class="titles">
                 <div div class="image">
-                  <%= image_tag "price-tag.png", alt: "Le Wagon", width: 20 %>
+                  <i class="fas fa-money-check-alt"></i>
                 </div>
-                <p><%= "#{@car.price} per day" %></p>
+                <p><%= "#{@car.price} $ per day" %></p>
               </div>
               <div class="titles">
                 <div div class="image">
-                 <%= image_tag "paper.png", alt: "Le Wagon", width: 20 %>
+                 <i class="fas fa-info"></i>
                 </div>
                 <p><%= "#{@car.summary}" %></p>
               </div>
               <div class="titles">
                 <div div class="image">
-                 <%= image_tag "multiple-users-silhouette.png", alt: "Le Wagon", width: 20 %>
+                 <i class="fas fa-users"></i>
                 </div>
                 <p><%= "#{@car.capacity} maximum" %></p>
               </div>
               <div class="titles">
                 <div div class="image">
-                 <%= image_tag "engine.png", alt: "Le Wagon", width: 20 %>
+                 <i class="fas fa-motorcycle"></i>
                 </div>
                 <p><%= "#{@car.engine}" %></p>
               </div>
               <div class="titles">
                 <div class="image">
-                 <%= image_tag "jigsaw.png", alt: "Le Wagon", width: 20 %>
+                 <i class="fas fa-plus"></i>
                 </div>
                 <p><%= "#{@car.features}" %></p>
               </div>
             </div>
-            <div class="links">
-              <%= link_to "Remove",
+      </div>
+                  <div class="links">
+              <%= link_to "Rent this car", new_car_reservation_path(@car) %>
+              <%= link_to "Delete",
                           car_path(@car),
                           method: :delete,
                           data: { confirm: "Are you sure?" } %>
               <% if policy(@car).edit? %>
                <%= link_to "Update", edit_car_path(@car) %>
               <% end %>
-              <%= link_to "Rent this car", new_car_reservation_path(@car) %>
+              <%= link_to "Back", cars_path %>
             </div>
-      </div>
     </div>
  </div>
