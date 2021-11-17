@@ -18,7 +18,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 50px;
+}
 
+.allcards {
+  max-height: 70vh;
+  overflow: scroll;
 }
 
 // Smallest device
