@@ -3,6 +3,15 @@ class CarsController < ApplicationController
 
   def index
     @cars = policy_scope(Car)
+
+    @markers = @cars.geocoded.map do |car|
+      {
+        lat: car.latitude,
+        lng: car.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { car: car }),
+        image_url: helpers.asset_url("rocket.png")
+      }
+    end
   end
 
   def new
@@ -14,7 +23,7 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     @car.user = current_user
     authorize @car
-    
+
     if @car.save
 
       redirect_to @car, notice: 'car was successfully created.'
