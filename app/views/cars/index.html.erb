@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="allcards">
+  <div class="allcards pt-3 pb-3">
     <div class="title text-center pr-2 d-flex justify-content-between align-items-center">
-      <h1>All our cars (<%= @cars.length %>)</h1>
+      <h1>All our vehicules (<%= @cars.length %>)</h1>
     </div>
     <div class="cards mt-3">
       <% @cars.each do |car| %>
@@ -11,7 +11,7 @@
           <div class="card-trip-infos">
             <div>
               <h2><%= link_to car.name, car_path(car[:id]) %></h2>
-              <p><%= car.summary %></p>
+              <div class="card-summary mt-2 mr-1"><p><%= car.summary %></p></div>
             </div>
           <h2 class="card-trip-pricing"><%= car.price %>$/day</h2>
           <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />

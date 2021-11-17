@@ -12,19 +12,12 @@
 @import "components/index";
 @import "pages/index";
 
-html {
-    font-family: 'Josefin Sans', sans-serif!important ;
-}
-
-.home .body {
-  background-image: url('https://images2.alphacoders.com/113/thumb-1920-1132805.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  background-repeat: no-repeat;
-}
 
 body {
   background: rgb(2,29,74);
-  background: linear-gradient(121deg, rgba(2,29,74,1) 0%, rgba(199,94,51,1) 50%, rgba(2,29,74,1) 100%);
+  background: linear-gradient(121deg, rgba(2,29,74,1) 0%, rgba(199,94,51,1) 50%, rgba(2,29,74,1) 100%), no-repeat;
+}
+
+.content-wrapper {
+  min-height: calc(100vh - 70px - 100px);
 }
