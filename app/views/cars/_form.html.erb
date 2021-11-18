@@ -6,8 +6,7 @@
         <%= f.text_field :name %>
       </div>
       <div class="m-2" style="color: aliceblue;">
-        <div><%= f.label :category %></div>
-        <%= f.text_field :category %>
+        <%= f.input :category, collection: [ "Earth", "Air", "Sea" ] %>
       </div>
       <div class="m-2" style="color: aliceblue;">
 
@@ -16,20 +15,23 @@
                 wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
       </div>
       <div class="m-2" style="color: aliceblue;">
-        <div><%= f.label :features %></div>
-        <%= f.text_field :features %>
+        <%= f.input :features, collection: ["Can shoot", "Very fast", "Can travel through time", "Can drift", "Space travel", "Underwater"] %>
       </div>
       <div class="m-2" style="color: aliceblue;">
         <div><%= f.label :summary %></div>
         <%= f.text_field :summary %>
       </div>
       <div class="m-2" style="color: aliceblue;">
-        <div><%= f.label :engine %></div>
-        <%= f.text_field :engine %>
+
+        <%= f.input :engine, collection: ["V8", "Nuclear", "Gas", "Nitro", "Other"] %>
       </div>
       <div class="m-2" style="color: aliceblue;">
         <div><%= f.label :price %></div>
         <%= f.number_field :price %>
+      </div>
+      <div class="m-2" style="color: aliceblue;">
+        <div><%= f.label :capacity %></div>
+        <%= f.number_field :capacity %>
       </div>
       <div class="m-2" style="color: aliceblue;">
         <div><%= f.input :photo, as: :file %></div>
