@@ -30,7 +30,7 @@ class CarsController < ApplicationController
 
     if @car.save
 
-      redirect_to @car, notice: 'car was successfully created.'
+      redirect_to @car, notice: 'Your crazy car has just been successfully created !!'
     else
       render :new
     end
