@@ -3,6 +3,10 @@ class CarsController < ApplicationController
 
   def index
     @cars = policy_scope(Car)
+    if params[:query].present?
+      @cars = @cars.search_by_name_and_address(params[:query])
+    end
+
 
     @markers = @cars.geocoded.map do |car|
       {

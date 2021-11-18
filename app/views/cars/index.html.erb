@@ -13,8 +13,13 @@
               <h2><%= link_to car.name, car_path(car[:id]) %></h2>
               <div class="card-summary mt-2 mr-1"><p><%= car.summary %></p></div>
             </div>
-              <h2 class="card-trip-pricing"><%= car.price %>€/day</h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              <h2 class="card-trip-pricing"><%= car.price %>$/day</h2>
+              <% if car.user.avatar.attached? %>
+              <img src="<%= cl_image_path car.user.avatar.key, height: 30 %>" alt="" class="card-trip-user avatar-bordered avatar">
+                <% else %>
+              <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80" class="card-trip-user avatar-bordered" />
+              <% end  %>
+
           </div>
         <% end %>
         </div>
