@@ -9,5 +9,11 @@
     <% @reservation.price = @reservation.car.price * @reservation.total %>
 
     <H1>Total price : <%= @reservation.price %>€</H1>
+
+    <p><%= link_to "Remove",
+                    "/dashboard",
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
+              </p>
   </div>
 </div>

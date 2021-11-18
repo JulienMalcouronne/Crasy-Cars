@@ -24,3 +24,19 @@
 .company {
   letter-spacing: -6px;
 }
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+}
+
+.dropdown-menu[data-bs-popper] {
+  left: -120px !important;
+}
+
+.dropdown-menu {
+  a {
+    color: #0F1D2F!important;
+  }
+}
