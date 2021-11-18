@@ -4,18 +4,36 @@
     <h1 class="mt-3">Hello <%= @user.first_name.capitalize %> !</h1>
     <br>
     <h2>Find bellow all your reservations:</h2>
-    <ul>
-      <% @user.reservations.each do |reservation| %>
-        <li>
-        <%= link_to reservation.car.name, car_reservation_path(reservation.car, reservation) %>
-        <%= link_to "Remove",
+    <ul class="cards">
+    <% @user.reservations.each do |reservation| %>
+      <div class="card-trip mt-3" >
+        <% if reservation.car.photo.attached?%>
+          <img src="<%= cl_image_path reservation.car.photo.key, height: 300 %>" alt="">
+          <div class="card-trip-infos">
+            <div>
+              <% reservation.total = (reservation.end_date - reservation.started_date) / 60000 %>
+              <h2><%= link_to reservation.car.name, car_reservation_path(reservation.car, reservation) %> - <%= reservation.total %> days</h2>
+              <p><%= link_to "Remove",
                     reservation_path(reservation),
                     method: :delete,
                     data: { confirm: "Are you sure?" } %>
-        </li>
-      <% end  %>
+              </p>
+            </div>
+          <% reservation.price = reservation.car.price * reservation.total %>
+          <h2 class="card-trip-pricing"><%= reservation.price %>€</h2>
+             <% if @user.avatar.attached? %>
+              <img src="<%= cl_image_path @user.avatar.key, height: 30 %>" alt="" class="card-trip-user avatar-bordered avatar">
+                <% else %>
+              <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80" class="card-trip-user avatar-bordered" />
+              <% end  %>
+          </div>
+        <% end %>
+        </div>
+      <% end %>
     </ul>
+
     <br>
+
     <h2>Find bellow all your cars:</h2>
     <ul class="cards">
     <% @user.cars.each do |car| %>
@@ -28,7 +46,11 @@
               <p class="card-summary mt-2 mr-1"><%= car.summary %></p>
             </div>
           <h2 class="card-trip-pricing"><%= car.price %>$/day</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+            <% if car.user.avatar.attached? %>
+              <img src="<%= cl_image_path car.user.avatar.key, height: 30 %>" alt="" class="card-trip-user avatar-bordered avatar">
+                <% else %>
+              <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80" class="card-trip-user avatar-bordered" />
+              <% end  %>
           </div>
         <% end %>
         </div>
