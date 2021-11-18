@@ -21,11 +21,28 @@ justify-content: center;
 align-items: flex-start;
 margin-bottom: 40px;
 
+.btn-primary{
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  &:hover{
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspectiv(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 5px 5px 5px 5px yellow;
+  position: relative;
+  }
+}
+
+}
+
 .text.optional{
   margin:0px;
 }
 
-}
+
 
 .mapboxgl-ctrl-geocoder--input{
   width: 100px;
@@ -39,4 +56,8 @@ margin-bottom: 40px;
   -o-background-size: cover;
   background-size: cover;
   margin-top: -17px;
+}
+
+.form-select.select.optional{
+  width: 242px;
 }
