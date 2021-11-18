@@ -3,21 +3,20 @@
   <div class="wrap">
     <div class="all">
       <div class="text">
-          <h2>Description</h2>
           <div class="titles">
-            <p><%= "#{@car.price} $ per day" %></p>
+            <span>Price</span><p><%= "#{@car.price} $ per day" %></p>
           </div>
           <div class="titles">
-            <p><%= "Summary : #{@car.summary}" %></p>
+            <span>Summary</span><p><%= "#{@car.summary}" %></p>
           </div>
           <div class="titles">
-          <p><%= "#{@car.capacity} people maximum" %></p>
+           <span>Capacity</span><p><%= "#{@car.capacity}" %></p>
           </div>
           <div class="titles">
-          <p><%= "Power : #{@car.engine}" %></p>
+            <span>Power</span><p><%= "#{@car.engine}" %></p>
           </div>
           <div class="titles">
-            <p><%= "Feature : #{@car.features}" %></p>
+            <span>Feature</span><p><%= "#{@car.features}" %></p>
           </div>
       </div>
       <div class="card-product" >
@@ -33,12 +32,12 @@
           <%= link_to "Back", cars_path %>
         </div>
       </div>
-      <div class="bookings">
-        <h1>Rent the Vehicule</h1>
-          <%=simple_form_for [@car, @reservation] do |f| %>
-            <%= f.input :started_date, as: :date %>
-            <%= f.input :end_date, as: :date %>
-            <%= f.submit %>
+     <div class="bookings" style="width: 400px; margin: 0 auto;">
+        <h2>Book the Vehicule</h2>
+          <%= simple_form_for :search, method: "get" do |f| %>
+            <%= f.input :starts_at, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.button :submit, "Go", class: "btn btn-primary" %>
           <% end %>
       </div>
     </div>

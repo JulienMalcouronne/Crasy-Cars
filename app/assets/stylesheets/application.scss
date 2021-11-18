@@ -13,12 +13,12 @@
 @import "pages/index";
 @import 'mapbox-gl/dist/mapbox-gl';
 @import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
+@import "flatpickr/dist/flatpickr";
 
 
 body {
-  background: rgb(2,29,74);
-  background: linear-gradient(121deg, rgba(2,29,74,1) 0%, rgba(199,94,51,1) 50%, rgba(2,29,74,1) 100%), no-repeat;
-}
+background: rgb(2,0,36);
+background: linear-gradient(266deg, rgba(2,0,36,1) 14%, rgba(9,9,121,1) 39%, rgba(7,58,153,1) 64%);}
 
 .content-wrapper {
   min-height: calc(100vh - 70px - 100px);
