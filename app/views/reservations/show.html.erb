@@ -2,7 +2,7 @@
   <div class="sum">
     <h2>Summary of your booking: </h2>
 
-    <h2><%= @reservation.car.name %></h2>
+    <h2><%= @reservation.car.name %>-<%= @reservation.car.price %>€ per day</h2>
     <h4><%= @reservation.car.price %>€ per day</h4>
     <% @reservation.total = (@reservation.end_date - @reservation.started_date) / 60000 %>
     <h4>total day(s) of reservation: <%= @reservation.total %></h4>

@@ -1,0 +1,25 @@
+.popup {
+  padding: 10px;
+}
+
+.popup > img {
+  height: 70px;
+}
+
+.popup {
+  a {
+    font-style: none;
+    color: aliceblue!important;
+    padding: 10px;
+    border-radius: 20px;
+    background: #0F1D2F!important;
+    border: none!important;
+    width: 80%;
+  }
+
+  a:hover {
+    background: #264977;
+    color: aliceblue;
+    border-color: none!important;
+  }
+}
