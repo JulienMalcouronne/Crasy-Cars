@@ -1,51 +1,45 @@
 <div class="container content-wrapper pt-5">
-  <div class="card-product" >
-    <%= image_tag cl_image_path @car.photo.key, height: 300 %>
-    <br>
-    <div class="text">
-      <h1><%= @car.name %> </h1>
-      <div class="titles">
-        <div div class="image">
-          <i class="fas fa-money-check-alt"></i>
-        </div>
-      <p><%= "#{@car.price} $ per day" %></p>
+  <h1><%= @car.name %> </h1>
+  <div class="wrap">
+    <div class="all">
+      <div class="text">
+          <h2>Description</h2>
+          <div class="titles">
+            <p><%= "#{@car.price} $ per day" %></p>
+          </div>
+          <div class="titles">
+            <p><%= "Summary : #{@car.summary}" %></p>
+          </div>
+          <div class="titles">
+          <p><%= "#{@car.capacity} people maximum" %></p>
+          </div>
+          <div class="titles">
+          <p><%= "Power : #{@car.engine}" %></p>
+          </div>
+          <div class="titles">
+            <p><%= "Feature : #{@car.features}" %></p>
+          </div>
       </div>
-    <div class="titles">
-      <div div class="image">
-        <i class="fas fa-info"></i>
-      </div>
-    <p><%= "#{@car.summary}" %></p>
-    </div>
-    <div class="titles">
-    <div div class="image">
-      <i class="fas fa-users"></i>
-    </div>
-      <p><%= "#{@car.capacity} maximum" %></p>
-    </div>
-    <div class="titles">
-    <div div class="image">
-      <i class="fas fa-motorcycle"></i>
-    </div>
-      <p><%= "#{@car.engine}" %></p>
-      </div>
-    <div class="titles">
-      <div class="image">
-    <i class="fas fa-plus"></i>
-        </div>
-    <p><%= "#{@car.features}" %></p>
-    </div>
-      </div>
+      <div class="card-product" >
+        <%= image_tag cl_image_path @car.photo.key, height: 300 %>
         <div class="links">
-    <%= link_to "Rent", new_car_reservation_path(@car) %>
-    <%= link_to "Delete",
-                          car_path(@car),
-                          method: :delete,
-                          data: { confirm: "Are you sure?" } %>
-              <% if policy(@car).edit? %>
-               <%= link_to "Update", edit_car_path(@car) %>
-              <% end %>
-              <%= link_to "Back", cars_path %>
-            </div>
+          <%= link_to "Delete",
+              car_path(@car),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+          <% if policy(@car).edit? %>
+          <%= link_to "Update", edit_car_path(@car) %>
+                    <% end %>
+          <%= link_to "Back", cars_path %>
+        </div>
+      </div>
+      <div class="bookings">
+        <h1>Rent the Vehicule</h1>
+          <%=simple_form_for [@car, @reservation] do |f| %>
+            <%= f.input :started_date, as: :date %>
+            <%= f.input :end_date, as: :date %>
+            <%= f.submit %>
+          <% end %>
       </div>
     </div>
   </div>
