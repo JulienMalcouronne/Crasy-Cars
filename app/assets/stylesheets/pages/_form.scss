@@ -1,0 +1,42 @@
+.creating{
+  display: flex;
+    label{
+      display: flex;
+      justify-content:flex-start
+      }
+    input{
+      display: flex;
+      justify-content:flex-start;
+      width: 242px;
+    }
+}
+
+.simple_form.new_car{
+border-radius: 5px;
+margin-bottom: 10px;
+width: 400px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+margin-bottom: 40px;
+
+.text.optional{
+  margin:0px;
+}
+
+}
+
+.mapboxgl-ctrl-geocoder--input{
+  width: 100px;
+}
+
+.wrapping{
+  background-image: url(https://cdn.pixabay.com/photo/2020/08/19/12/29/car-5500794_1280.jpg);
+  background-repeat:no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-top: -17px;
+}
