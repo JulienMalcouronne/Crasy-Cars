@@ -14,7 +14,8 @@ class ReservationsController < ApplicationController
     @reservation.car = @car
     @reservation.user = current_user
     if @reservation.save!
-      redirect_to car_reservation_path(@car, @reservation), notice: 'Reservation was successfully created.'
+      redirect_to car_reservation_path(@car, @reservation)
+      flash[:alert] = 'Booking was successfully created.'
     else
       render :new
     end
