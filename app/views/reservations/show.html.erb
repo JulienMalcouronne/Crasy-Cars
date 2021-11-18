@@ -1,19 +1,71 @@
-<div class="container content-wrapper pt-5 d-flex justify-content-center">
+<div class="container content-wrapper pt-3 d-flex justify-content-center">
   <div class="sum">
-    <h2>Summary of your booking: </h2>
 
-    <h2><%= @reservation.car.name %>-<%= @reservation.car.price %>€ per day</h2>
-    <h4><%= @reservation.car.price %>€ per day</h4>
-    <% @reservation.total = (@reservation.end_date - @reservation.started_date) / 60000 %>
-    <h4>total day(s) of reservation: <%= @reservation.total %></h4>
-    <% @reservation.price = @reservation.car.price * @reservation.total %>
+    <h1 class="mb-2"><%= @reservation.car.name %></h1>
 
-    <H1>Total price : <%= @reservation.price %>€</H1>
+  <div class="wrap">
 
-    <p><%= link_to "Remove",
-                    "/dashboard",
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } %>
-              </p>
+    <div class="all mt-3">
+      <div class="text">
+
+        <h2>Description</h2>
+
+        <div class="titles">
+          <span>Price</span><p><%= "#{@reservation.car.price} € per day" %></p>
+        </div>
+
+        <div class="titles">
+          <span>Summary</span><p><%= "#{@reservation.car.summary}" %></p>
+        </div>
+
+        <div class="titles">
+          <span>Capacity</span><p><%= "#{@reservation.car.capacity}" %></p>
+        </div>
+
+        <div class="titles">
+          <span>Power</span><p><%= "#{@reservation.car.engine}" %></p>
+        </div>
+
+        <div class="titles">
+          <span>Feature</span><p><%= "#{@reservation.car.features}" %></p>
+        </div>
+
+        <div class="titles">
+          <span>Address</span><p><%= "#{@reservation.car.address}" %></p>
+        </div>
+
+      </div>
+
+      <div class="card-product" >
+        <%= image_tag cl_image_path @reservation.car.photo.key, height: 300 %>
+        <div class="links">
+          <%= link_to "Delete",
+            car_path(@reservation.car),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+          <% if policy(@reservation.car).edit? %>
+          <%= link_to "Update", edit_car_path(@reservation.car) %>
+                  <% end %>
+          <%= link_to "Back", cars_path %>
+        </div>
+
+
+      </div>
+        <div class="text">
+        <h2>Summary of your booking: </h2>
+
+        <% @reservation.total = (@reservation.end_date - @reservation.started_date) / 60000 %>
+        <p>From <%= @reservation.started_date %> to <%= @reservation.end_date %></p>
+
+        <h4><%= @reservation.car.price %>€ per day</h4>
+        <h4><%= @reservation.total %> days</h4>
+        <% @reservation.price = @reservation.car.price * @reservation.total %>
+        <H1>Total price : <%= @reservation.price %>€</H1>
+      </div>
+      </div>
+    </div>
   </div>
+</div>
+
+
 </div>
