@@ -52,7 +52,7 @@
 
       </div>
         <div class="text">
-        <h2>Summary of your booking: </h2>
+        <h2>Booking Summary</h2>
 
         <% @reservation.total = (@reservation.end_date - @reservation.started_date) / 60000 %>
         <p>From <%= @reservation.started_date %> to <%= @reservation.end_date %></p>
