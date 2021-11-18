@@ -57,9 +57,9 @@
 
 <h2>Find bellow all your cars reserved: </h2>
    <ul class="cards">
-    <% @user.reservations.each do |reservation| %>
-      <div class="card-trip mt-3" >
-        <% if reservation.user != current_user%>
+    <% current_user.cars.each do |car| %>
+      <% car.reservations.each do |reservation| %>
+        <div class="card-trip mt-3" >
           <img src="<%= cl_image_path reservation.car.photo.key, height: 300 %>" alt="">
           <div class="card-trip-infos">
             <div>
@@ -72,14 +72,15 @@
             </div>
           <% reservation.price = reservation.car.price * reservation.total %>
           <h2 class="card-trip-pricing"><%= reservation.price %>€</h2>
-             <% if @user.avatar.attached? %>
+            <% if @user.avatar.attached? %>
               <img src="<%= cl_image_path @user.avatar.key, height: 30 %>" alt="" class="card-trip-user avatar-bordered avatar">
                 <% else %>
               <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80" class="card-trip-user avatar-bordered" />
               <% end  %>
           </div>
-        <% end %>
+
         </div>
       <% end %>
+    <% end %>
     </ul>
 </div>
