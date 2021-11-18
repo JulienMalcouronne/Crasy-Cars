@@ -1,38 +1,40 @@
-<div class="form d-flex">
-  <%= simple_form_for(@car) do |f| %>
-    <div class="m-2" style="color: aliceblue;">
-      <div><%= f.label :name %></div>
-      <%= f.text_field :name %>
-    </div>
-    <div class="m-2" style="color: aliceblue;">
-      <div><%= f.label :category %></div>
-      <%= f.text_field :category %>
-    </div>
-    <div class="m-2" style="color: aliceblue;">
-      <div><%= f.label :address %></div>
-      <%= f.input :address,
-      input_html: { data: { geocoder_target: "address" }, class: "d-none" },
-              wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
-    </div>
-    <div class="m-2" style="color: aliceblue;">
-      <div><%= f.label :features %></div>
-      <%= f.text_field :features %>
-    </div>
-    <div class="m-2" style="color: aliceblue;">
-      <div><%= f.label :summary %></div>
-      <%= f.text_field :summary %>
-    </div>
-    <div class="m-2" style="color: aliceblue;">
-      <div><%= f.label :engine %></div>
-      <%= f.text_field :engine %>
-    </div>
-    <div class="m-2" style="color: aliceblue;">
-      <div><%= f.label :price %></div>
-      <%= f.number_field :price %>
-    </div>
-    <div class="m-2" style="color: aliceblue;">
-      <div><%= f.input :photo, as: :file %></div>
-      <%= f.submit %>
-    </div>
-  <% end %>
+<div class="container">
+  <div class="form d-flex justify-content-center">
+    <%= simple_form_for(@car) do |f| %>
+      <div class="m-2" style="color: aliceblue;">
+        <div><%= f.label :name %></div>
+        <%= f.text_field :name %>
+      </div>
+      <div class="m-2" style="color: aliceblue;">
+        <div><%= f.label :category %></div>
+        <%= f.text_field :category %>
+      </div>
+      <div class="m-2" style="color: aliceblue;">
+
+        <%= f.input :address,
+        input_html: { data: { geocoder_target: "address" }, class: "d-none" },
+                wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
+      </div>
+      <div class="m-2" style="color: aliceblue;">
+        <div><%= f.label :features %></div>
+        <%= f.text_field :features %>
+      </div>
+      <div class="m-2" style="color: aliceblue;">
+        <div><%= f.label :summary %></div>
+        <%= f.text_field :summary %>
+      </div>
+      <div class="m-2" style="color: aliceblue;">
+        <div><%= f.label :engine %></div>
+        <%= f.text_field :engine %>
+      </div>
+      <div class="m-2" style="color: aliceblue;">
+        <div><%= f.label :price %></div>
+        <%= f.number_field :price %>
+      </div>
+      <div class="m-2" style="color: aliceblue;">
+        <div><%= f.input :photo, as: :file %></div>
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
 </div>
