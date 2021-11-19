@@ -81,7 +81,7 @@
                     <h2><%= link_to reservation.car.name, car_reservation_path(reservation.car, reservation) %></h2>
                     <p><%= reservation.started_date %></p>
                     <p><%= reservation.end_date %></p>
-                    <% if reservation.status == "confirmed" %>
+                    <% if reservation.status == "accepted" %>
                       <p id="confirm" class= "btn btn-success"><%= reservation.status %></p>
                     <% elsif reservation.status == "canceled" %>
                       <p id="confirm" class= "btn btn-danger"><%= reservation.status %></p>
