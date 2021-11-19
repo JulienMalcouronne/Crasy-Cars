@@ -3,7 +3,7 @@
     <div class="title text-center d-flex justify-content-between align-items-center">
       <h1>All our vehicules (<%= @cars.length %>)</h1>
     </div>
-    <div class="cards mt-3">
+    <div class="cards mt-3" >
       <% @cars.each do |car| %>
         <div class="card-trip" >
         <% if car.photo.attached?%>

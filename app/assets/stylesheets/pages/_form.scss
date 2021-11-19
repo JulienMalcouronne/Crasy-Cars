@@ -16,7 +16,7 @@
 .simple_form.new_car{
 border-radius: 5px;
 margin-bottom: 10px;
-width: 400px;
+width: fit-content;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -24,7 +24,7 @@ align-items: flex-start;
 margin-bottom: 40px;
 
 .btn-primary{
-  width: 242px;
+  width: 500px;
   background-color: #0F1D2F;
   padding: 10px;
   border-radius: 5px;
@@ -50,7 +50,7 @@ margin-bottom: 40px;
 
 
 .mapboxgl-ctrl-geocoder--input{
-  width: 100px;
+  width: 500px;
 }
 
 .wrapping{
@@ -70,7 +70,6 @@ margin-bottom: 40px;
 
 .text.optional{
   padding-left: 0px;
-  margin-bottom: 1spx;
   border-radius: 5px;
 }
 
@@ -80,10 +79,15 @@ margin-bottom: 40px;
   border: none;
 }
 
+#car_engine{
+  margin-bottom: 0px;
+}
+
 #car_summary{
   height: 40px;
   border-radius: 5px;
   border: none;
+  width: 500px;
 }
 
 #car_price{
@@ -96,4 +100,12 @@ margin-bottom: 40px;
   height: 40px;
   border-radius: 5px;
   border: none;
+  width: 500px;
+}
+
+#car_photo{
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  width: 500px;
 }
