@@ -1,7 +1,22 @@
 
-#confirm {
-  color: aliceblue;
+#confirm-ok {
+  color: rgb(0, 185, 0);
+  margin-bottom: 0px;
   }
+
+#confirm-pending {
+  color: orange;
+  margin-bottom: 0px;
+
+  }
+
+#confirm-ko {
+  color: red;
+  margin-bottom: 0px;
+
+  }
+
+
 .nav-tabs{
   color:aliceblue;
   border-bottom: none;
@@ -13,5 +28,3 @@
     color: aliceblue;
   }
 }
-
-
