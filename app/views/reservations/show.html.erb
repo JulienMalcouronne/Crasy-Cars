@@ -35,7 +35,7 @@
         <%= image_tag cl_image_path @reservation.car.photo.key, height: 300 %>
         <div class="links">
           <%= link_to "Delete",
-            car_path(@reservation.car),
+            reservation_path(@reservation),
             method: :delete,
             data: { confirm: "Are you sure?" } %>
           <% if policy(@reservation.car).edit? %>
@@ -54,7 +54,7 @@
 
         <div class="titles">
           <% @reservation.total = (@reservation.end_date - @reservation.started_date) / 60000 %>
-          <span>Date</span><p>From<%= @reservation.started_date %> to <%= @reservation.end_date %></p>
+          <span>Date</span><p>From <%= @reservation.started_date.strftime('%d-%m-%Y') %> to <%= @reservation.end_date.strftime('%d-%m-%Y') %></p>
         </div>
         <div class="titles">
           <span>Number of days</span><p><%= @reservation.total %> days</p>

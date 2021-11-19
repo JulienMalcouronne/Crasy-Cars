@@ -8,6 +8,11 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :reservations, only: [:destroy]
+  resources :reservations, only: [:destroy] do
+    member do
+      post :confirm
+      post :refuse
+    end
+  end
   get "/dashboard", to: "pages#dashboard"
 end

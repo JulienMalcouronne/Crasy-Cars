@@ -20,6 +20,7 @@ import "controllers"
 import "bootstrap"
 import { initFlatpickr } from "../plugins/flatpickr";
 // import { buttonListener } from "../plugins/listener";
+
+// import { buttonDashToConfirmed } from '../plugins/listener';
+// import { buttonMaster } from '../plugins/listener';
 initFlatpickr();
-// buttonDashToConfirmed();
-// buttonListener();
