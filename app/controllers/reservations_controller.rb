@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
-
    before_action :set_reservation, only: %i[destroy show]
+
   def new
     @reservation = Reservation.new
     authorize @reservation
@@ -27,7 +27,14 @@ class ReservationsController < ApplicationController
   end
 
   def show
-
+    @car = @reservation.car
+    @markers = [
+      {
+        lat: @car.latitude,
+        lng: @car.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { car: @car }),
+        image_url: helpers.asset_url("rocket.png")
+      }]
   end
 
   private
