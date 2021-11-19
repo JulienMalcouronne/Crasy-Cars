@@ -35,7 +35,7 @@
         <%= image_tag cl_image_path @reservation.car.photo.key, height: 300 %>
         <div class="links">
           <%= link_to "Delete",
-            car_path(@reservation.car),
+            reservation_path(@reservation),
             method: :delete,
             data: { confirm: "Are you sure?" } %>
           <% if policy(@reservation.car).edit? %>

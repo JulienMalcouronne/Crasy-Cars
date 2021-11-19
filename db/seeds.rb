@@ -31,3 +31,33 @@
 #     summary: "Monkey rent car you give me money",
 #     engine: "Banana Juice"
 #   })
+puts "Creating cars ..."
+users = []
+5.times do
+  user_new = User.create(
+    email: Faker::Internet.email,
+    first_name: Faker::Name.name,
+    last_name: Faker::Name.name,
+    password: Faker::Name.name,
+  )
+  users << user_new
+end
+
+users.each do |user|
+  5.times do
+    car = Car.create(
+        name: Faker::Name.name,
+        category: "Road",
+        address: "rue de Paris",
+        price: Faker::Number.positive,
+        capacity: 2,
+        features: "Machine Gun",
+        summary: "Brand new car ! Super usefull",
+        engine: "Nuclear",
+        image:
+        user: user
+      )
+  end
+end
+
+puts "seeding done"
