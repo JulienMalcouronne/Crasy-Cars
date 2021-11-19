@@ -54,7 +54,7 @@
 
         <div class="titles">
           <% @reservation.total = (@reservation.end_date - @reservation.started_date) / 60000 %>
-          <span>Date</span><p>From<%= @reservation.started_date %> to <%= @reservation.end_date %></p>
+          <span>Date</span><p>From <%= @reservation.started_date.strftime('%d-%m-%Y') %> to <%= @reservation.end_date.strftime('%d-%m-%Y') %></p>
         </div>
         <div class="titles">
           <span>Number of days</span><p><%= @reservation.total %> days</p>

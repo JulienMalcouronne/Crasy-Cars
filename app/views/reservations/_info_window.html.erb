@@ -1,0 +1,10 @@
+
+<div class="popup">
+  <img src="<%= cl_image_path car.photo.key%>" alt="">
+  <h3><%= car.name %></h3>
+  <h6><%= car.price %>€/day</h6>
+  <p><%= car.address %></p>
+  <div>
+    <%= link_to "Book it", car_path(car[:id]), :class => "btn btn-primary" %>
+  </div>
+</div>
