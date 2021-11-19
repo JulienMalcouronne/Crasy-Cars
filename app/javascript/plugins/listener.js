@@ -1,10 +1,17 @@
 // const buttonListener = () => {
   const buttonDashToConfirmed = document.querySelectorAll("#confirm");
   console.log(buttonDashToConfirmed)
-  buttonDashToConfirmed.addEventListener('click', (event) => {
-    event.currentTarget.classList.remove('btn-warning')
-    event.currentTarget.classList.add('btn-success')
-  });
+  // buttonDashToConfirmed.addEventListener('click', (event) => {
+  //   // event.currentTarget.classList.remove('btn', 'btn-warning')
+  //   // event.currentTarget.classList.add('btn', 'btn-success')
+  //   console.log('elo')
+  // });
+  buttonDashToConfirmed.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      event.currentTarget.classList.remove('btn', 'btn-warning')
+      event.currentTarget.classList.add('btn', 'btn-success')
+    })
+  })
 // };
 export { buttonDashToConfirmed };
 // export { buttonListener };
