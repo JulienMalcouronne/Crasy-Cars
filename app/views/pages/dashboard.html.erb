@@ -14,6 +14,13 @@
               <% reservation.total = (reservation.end_date - reservation.started_date) / 60000 %>
               <h2><%= link_to reservation.car.name, car_reservation_path(reservation.car, reservation) %></h2>
               <p><%= reservation.total %> days</p>
+              <% if reservation.status == "confirmed" %>
+                <p class= "btn btn-success"><%= reservation.status %></p>
+              <% elsif reservation.status == "canceled" %>
+                <p class= "btn btn-danger"><%= reservation.status %></p>
+              <% else  %>
+                <p class= "btn btn-warning"><%= reservation.status %></p>
+              <% end %>
             </div>
           <% reservation.price = reservation.car.price * reservation.total %>
           <h2 class="card-trip-pricing"><%= reservation.price %>€</h2>
