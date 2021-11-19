@@ -19,5 +19,8 @@ require("channels")
 import "controllers"
 import "bootstrap"
 import { initFlatpickr } from "../plugins/flatpickr";
-
+// import { buttonListener } from "../plugins/listener";
+import { buttonDashToConfirmed } from '../plugins/listener';
 initFlatpickr();
+console.log(buttonDashToConfirmed);
+// buttonListener();

@@ -75,12 +75,13 @@
               <p><%= reservation.started_date %></p>
               <p><%= reservation.end_date %></p>
               <% if reservation.status == "confirmed" %>
-              <p class= "btn btn-success"><%= reservation.status %></p>
+              <p id="confirm" class= "btn btn-success"><%= reservation.status %></p>
               <% elsif reservation.status == "canceled" %>
-              <p class= "btn btn-danger"><%= reservation.status %></p>
+              <p id="confirm" class= "btn btn-danger"><%= reservation.status %></p>
               <% else  %>
-              <p class= "btn btn-warning"><%= reservation.status %></p>
+              <p id="confirm" class= "btn btn-warning"><%= reservation.status %></p>
               <% end %>
+              <h2 class="btn btn-info">confirm this reservation </h2>
               <p><%= reservation.total %> days</p>
             </div>
           <% reservation.price = reservation.car.price * reservation.total %>
