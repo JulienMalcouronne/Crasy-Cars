@@ -86,13 +86,18 @@
                     <% else  %>
                       <h6 id="confirm-pending">Status : <%= reservation.status.capitalize %></h6>
                     <% end %>
+
+                    <% if reservation.status != "accepted" %>
                     <p>From <%= reservation.started_date.strftime('%d-%m-%Y') %> to <%= reservation.end_date.strftime('%d-%m-%Y') %> - <%= reservation.total %> days</p>
                     <h2 id="master" class="btn btn-success"> <%= link_to "Confirm", confirm_reservation_path(reservation),
-                    method: :post %>
+                    method: :post %>  
                     </h2>
+                  <% end %>
+                  <% if reservation.status != "canceled" %>
                     <h2 id="masterr" class="btn btn-danger"> <%= link_to "Decline", refuse_reservation_path(reservation),
                     method: :post %>
                     </h2>
+                  <% end %>
 
                   </div>
                 <% reservation.price = reservation.car.price * reservation.total %>
