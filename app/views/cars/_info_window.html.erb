@@ -1,5 +1,7 @@
 <div class="popup">
-  <img src="<%= cl_image_path car.photo.key%>" alt="">
+  <% if car.photo.attached? %>
+    <img src="<%= cl_image_path car.photo.key%>" alt="">
+  <% end %>
   <h3><%= car.name %></h3>
   <h6><%= car.price %>€/day</h6>
   <p><%= car.address %></p>
