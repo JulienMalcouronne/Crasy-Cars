@@ -84,6 +84,9 @@
               <h2 id="master" class="btn btn-info"> <%= link_to "confirm", confirm_reservation_path(reservation),
               method: :post %>
               </h2>
+              <h2 id="masterr" class="btn btn-danger"> <%= link_to "refuse booking", refuse_reservation_path(reservation),
+              method: :post %>
+              </h2>
               <p><%= reservation.total %> days</p>
             </div>
           <% reservation.price = reservation.car.price * reservation.total %>

@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
 
-   before_action :set_reservation, only: %i[destroy show confirm]
+   before_action :set_reservation, only: %i[destroy show confirm refuse]
   def new
     @reservation = Reservation.new
     authorize @reservation
@@ -39,6 +39,11 @@ class ReservationsController < ApplicationController
 
   def confirm
     @reservation.update(status: "accepted")
+    redirect_to "/dashboard"
+  end
+
+  def refuse
+    @reservation.update(status: "canceled")
     redirect_to "/dashboard"
   end
 

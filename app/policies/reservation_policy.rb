@@ -20,6 +20,10 @@ class ReservationPolicy < ApplicationPolicy
     true
   end
 
+  def refuse?
+    true
+  end
+
   def update?
     record.user == user || user.admin
   end
