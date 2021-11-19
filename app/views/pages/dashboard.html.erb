@@ -1,100 +1,107 @@
-
 <div class="container content-wrapper">
-  <div class="allcards">
-    <h1 class="mt-3">Hello <%= @user.first_name.capitalize %> !</h1>
+  <h1 class="mt-3">Hello <%= @user.first_name.capitalize %> !</h1>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">My Reservations</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">My Cars</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">My Bookings</button>
+      </li>
+    </ul>
     <br>
-    <h2>Find bellow all your reservations:</h2>
-    <ul class="cards">
-    <% @user.reservations.each do |reservation| %>
-      <div class="card-trip mt-3" >
-        <% if reservation.car.photo.attached?%>
-          <img src="<%= cl_image_path reservation.car.photo.key, height: 300 %>" alt="">
-          <div class="card-trip-infos">
-            <div>
-              <% reservation.total = (reservation.end_date - reservation.started_date) / 60000 %>
-              <h2><%= link_to reservation.car.name, car_reservation_path(reservation.car, reservation) %></h2>
-              <p><%= reservation.total %> days</p>
-              <% if reservation.status == "confirmed" %>
-                <p class= "btn btn-success"><%= reservation.status %></p>
-              <% elsif reservation.status == "canceled" %>
-                <p class= "btn btn-danger"><%= reservation.status %></p>
-              <% else  %>
-                <p class= "btn btn-warning"><%= reservation.status %></p>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <ul class="cards">
+          <% @user.reservations.each do |reservation| %>
+            <div class="card-trip mt-3" >
+              <% if reservation.car.photo.attached?%>
+                <img src="<%= cl_image_path reservation.car.photo.key, height: 300 %>" alt="">
+                <div class="card-trip-infos">
+                  <div>
+                    <% reservation.total = (reservation.end_date - reservation.started_date) / 60000 %>
+                    <h2><%= link_to reservation.car.name, car_reservation_path(reservation.car, reservation) %></h2>
+                    <p><%= reservation.total %> days</p>
+                    <% if reservation.status == "confirmed" %>
+                      <p class= "btn btn-success"><%= reservation.status %></p>
+                    <% elsif reservation.status == "canceled" %>
+                      <p class= "btn btn-danger"><%= reservation.status %></p>
+                    <% else  %>
+                      <p class= "btn btn-warning"><%= reservation.status %></p>
+                    <% end %>
+                  </div>
+                <% reservation.price = reservation.car.price * reservation.total %>
+                <h2 class="card-trip-pricing"><%= reservation.price %>€</h2>
+                  <% if @user.avatar.attached? %>
+                    <img src="<%= cl_image_path @user.avatar.key, height: 30 %>" alt="" class="card-trip-user avatar-bordered avatar">
+                      <% else %>
+                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80" class="card-trip-user avatar-bordered" />
+                    <% end  %>
+                </div>
               <% end %>
             </div>
-          <% reservation.price = reservation.car.price * reservation.total %>
-          <h2 class="card-trip-pricing"><%= reservation.price %>€</h2>
-             <% if @user.avatar.attached? %>
-              <img src="<%= cl_image_path @user.avatar.key, height: 30 %>" alt="" class="card-trip-user avatar-bordered avatar">
+          <% end %>
+        </ul>
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <ul class="cards">
+          <% @user.cars.each do |car| %>
+          <div class="card-trip mt-3" >
+            <% if car.photo.attached?%>
+              <img src="<%= cl_image_path car.photo.key, height: 300 %>" alt="">
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= link_to car.name, car_path(car[:id]) %></h2>
+                    <p class="card-summary mt-2 mr-1"><%= car.summary %></p>
+                </div>
+              <h2 class="card-trip-pricing"><%= car.price %>$/day</h2>
+                <% if car.user.avatar.attached? %>
+                      <img src="<%= cl_image_path car.user.avatar.key, height: 30 %>" alt="" class="card-trip-user avatar-bordered avatar">
                 <% else %>
-              <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80" class="card-trip-user avatar-bordered" />
-              <% end  %>
-          </div>
-        <% end %>
-        </div>
-      <% end %>
-    </ul>
-
-    <br>
-
-    <h2>Find bellow all your cars:</h2>
-    <ul class="cards">
-      <% @user.cars.each do |car| %>
-      <div class="card-trip mt-3" >
-        <% if car.photo.attached?%>
-          <img src="<%= cl_image_path car.photo.key, height: 300 %>" alt="">
-          <div class="card-trip-infos">
-            <div>
-               <h2><%= link_to car.name, car_path(car[:id]) %></h2>
-                <p class="card-summary mt-2 mr-1"><%= car.summary %></p>
+                      <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80" class="card-trip-user avatar-bordered" />
+                <% end  %>
+              </div>
+            <% end %>
             </div>
-          <h2 class="card-trip-pricing"><%= car.price %>$/day</h2>
-            <% if car.user.avatar.attached? %>
-                  <img src="<%= cl_image_path car.user.avatar.key, height: 30 %>" alt="" class="card-trip-user avatar-bordered avatar">
-            <% else %>
-                  <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80" class="card-trip-user avatar-bordered" />
-            <% end  %>
-          </div>
-        <% end %>
-        </div>
-      <% end %>
-    </ul>
-  </div>
-
-
-<h2>Find bellow all your cars reserved: </h2>
-   <ul class="cards">
-    <% current_user.cars.each do |car| %>
-      <% car.reservations.each do |reservation| %>
-      <% reservation.total = (reservation.end_date - reservation.started_date) / 60000 %>
-        <div class="card-trip mt-3" >
-          <img src="<%= cl_image_path reservation.car.photo.key, height: 300 %>" alt="">
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= link_to reservation.car.name, car_reservation_path(reservation.car, reservation) %></h2>
-              <p><%= reservation.started_date %></p>
-              <p><%= reservation.end_date %></p>
-              <% if reservation.status == "confirmed" %>
-              <p id="confirm" class= "btn btn-success"><%= reservation.status %></p>
-              <% elsif reservation.status == "canceled" %>
-              <p id="confirm" class= "btn btn-danger"><%= reservation.status %></p>
-              <% else  %>
-              <p id="confirm" class= "btn btn-warning"><%= reservation.status %></p>
-              <% end %>
-              <h2 class="btn btn-info">confirm this reservation </h2>
-              <p><%= reservation.total %> days</p>
-            </div>
-          <% reservation.price = reservation.car.price * reservation.total %>
-          <h2 class="card-trip-pricing"><%= reservation.price %>€</h2>
-            <% if @user.avatar.attached? %>
-              <img src="<%= cl_image_path @user.avatar.key, height: 30 %>" alt="" class="card-trip-user avatar-bordered avatar">
-                <% else %>
-              <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80" class="card-trip-user avatar-bordered" />
-              <% end  %>
-          </div>
-
-        </div>
-      <% end %>
-    <% end %>
-    </ul>
+          <% end %>
+        </ul>
+      </div>
+      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <ul class="cards">
+          <% current_user.cars.each do |car| %>
+            <% car.reservations.each do |reservation| %>
+            <% reservation.total = (reservation.end_date - reservation.started_date) / 60000 %>
+              <div class="card-trip mt-3" >
+                <img src="<%= cl_image_path reservation.car.photo.key, height: 300 %>" alt="">
+                <div class="card-trip-infos">
+                  <div>
+                    <h2><%= link_to reservation.car.name, car_reservation_path(reservation.car, reservation) %></h2>
+                    <p><%= reservation.started_date %></p>
+                    <p><%= reservation.end_date %></p>
+                    <% if reservation.status == "confirmed" %>
+                      <p id="confirm" class= "btn btn-success"><%= reservation.status %></p>
+                    <% elsif reservation.status == "canceled" %>
+                      <p id="confirm" class= "btn btn-danger"><%= reservation.status %></p>
+                    <% else  %>
+                      <p id="confirm" class= "btn btn-warning"><%= reservation.status %></p>
+                    <% end %>
+                    <h2 class="btn btn-info">confirm this reservation </h2>
+                    <p><%= reservation.total %> days</p>
+                  </div>
+                <% reservation.price = reservation.car.price * reservation.total %>
+                <h2 class="card-trip-pricing"><%= reservation.price %>€</h2>
+                  <% if @user.avatar.attached? %>
+                    <img src="<%= cl_image_path @user.avatar.key, height: 30 %>" alt="" class="card-trip-user avatar-bordered avatar">
+                      <% else %>
+                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80" class="card-trip-user avatar-bordered" />
+                    <% end  %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          </ul>
+      </div>
+    </div>
 </div>
