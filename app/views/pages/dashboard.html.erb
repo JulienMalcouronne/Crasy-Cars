@@ -14,7 +14,7 @@
               <% reservation.total = (reservation.end_date - reservation.started_date) / 60000 %>
               <h2><%= link_to reservation.car.name, car_reservation_path(reservation.car, reservation) %></h2>
               <p><%= reservation.total %> days</p>
-              <% if reservation.status == "confirmed" %>
+              <% if reservation.status == "accepted" %>
                 <p class= "btn btn-success"><%= reservation.status %></p>
               <% elsif reservation.status == "canceled" %>
                 <p class= "btn btn-danger"><%= reservation.status %></p>
@@ -74,14 +74,16 @@
               <h2><%= link_to reservation.car.name, car_reservation_path(reservation.car, reservation) %></h2>
               <p><%= reservation.started_date %></p>
               <p><%= reservation.end_date %></p>
-              <% if reservation.status == "confirmed" %>
+              <% if reservation.status == "accepted" %>
               <p id="confirm" class= "btn btn-success"><%= reservation.status %></p>
               <% elsif reservation.status == "canceled" %>
               <p id="confirm" class= "btn btn-danger"><%= reservation.status %></p>
               <% else  %>
               <p id="confirm" class= "btn btn-warning"><%= reservation.status %></p>
               <% end %>
-              <h2 class="btn btn-info">confirm this reservation </h2>
+              <h2 id="master" class="btn btn-info"> <%= link_to "confirm", confirm_reservation_path(reservation),
+              method: :post %>
+              </h2>
               <p><%= reservation.total %> days</p>
             </div>
           <% reservation.price = reservation.car.price * reservation.total %>
