@@ -16,6 +16,10 @@ class ReservationPolicy < ApplicationPolicy
     true
   end
 
+  def confirm?
+    true
+  end
+
   def update?
     record.user == user || user.admin
   end

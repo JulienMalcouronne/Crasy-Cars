@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
-   before_action :set_reservation, only: %i[destroy show]
 
+   before_action :set_reservation, only: %i[destroy show confirm]
   def new
     @reservation = Reservation.new
     authorize @reservation
@@ -35,6 +35,11 @@ class ReservationsController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: { car: @car }),
         image_url: helpers.asset_url("rocket.png")
       }]
+  end
+
+  def confirm
+    @reservation.update(status: "accepted")
+    redirect_to "/dashboard"
   end
 
   private
