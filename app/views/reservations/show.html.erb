@@ -1,18 +1,12 @@
 <div class="container content-wrapper pt-3 d-flex justify-content-center">
   <div class="sum">
 
-    <h1 class="mb-2"><%= @reservation.car.name %></h1>
-
   <div class="wrap">
 
-    <div class="all mt-3">
+    <div class="allres mt-3">
       <div class="text">
 
         <h2>Description</h2>
-
-        <div class="titles">
-          <span>Price</span><p><%= "#{@reservation.car.price} € per day" %></p>
-        </div>
 
         <div class="titles">
           <span>Summary</span><p><%= "#{@reservation.car.summary}" %></p>
@@ -37,6 +31,7 @@
       </div>
 
       <div class="card-product" >
+        <h2>Booking n°<%= @reservation.id %> : <%= @reservation.car.name %></h2>
         <%= image_tag cl_image_path @reservation.car.photo.key, height: 300 %>
         <div class="links">
           <%= link_to "Delete",
@@ -53,17 +48,37 @@
       </div>
         <div class="text">
         <h2>Booking Summary</h2>
+        <div class="titles">
+          <span>Status</span><p><%= @reservation.status.capitalize %></p>
+        </div>
 
-        <% @reservation.total = (@reservation.end_date - @reservation.started_date) / 60000 %>
-        <p>From <%= @reservation.started_date %> to <%= @reservation.end_date %></p>
+        <div class="titles">
+          <% @reservation.total = (@reservation.end_date - @reservation.started_date) / 60000 %>
+          <span>Date</span><p>From<%= @reservation.started_date %> to <%= @reservation.end_date %></p>
+        </div>
+        <div class="titles">
+          <span>Number of days</span><p><%= @reservation.total %> days</p>
+        </div>
+        <div class="titles">
+          <span>Price</span><p><%= "#{@reservation.car.price} € per day" %></p>
+        </div>
+        <div class="titles">
+          <% @reservation.price = @reservation.car.price * @reservation.total %>
+          <span>Total price</span><p><%= @reservation.price %>€</p>
+        </div>
 
-        <h4><%= @reservation.car.price %>€ per day</h4>
-        <h4><%= @reservation.total %> days</h4>
-        <% @reservation.price = @reservation.car.price * @reservation.total %>
-        <H1>Total price : <%= @reservation.price %>€</H1>
       </div>
       </div>
+
     </div>
+    <div class="wrap pb-3">
+
+    <div class="d-flex justify-content-center" style="width: 1200px; height: 300px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
   </div>
 </div>
 

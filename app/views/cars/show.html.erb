@@ -1,17 +1,11 @@
 <div class="content-wrapper mt-3">
 
-  <h1 class="mb-2"><%= @car.name %></h1>
-
   <div class="wrap">
 
     <div class="all mt-3">
       <div class="text">
 
         <h2>Description</h2>
-
-        <div class="titles">
-          <span>Price</span><p><%= "#{@car.price} € per day" %></p>
-        </div>
 
         <div class="titles">
           <span>Summary</span><p><%= "#{@car.summary}" %></p>
@@ -36,6 +30,7 @@
       </div>
 
       <div class="card-product" >
+        <h2><%= @car.name %></h2>
         <%= image_tag cl_image_path @car.photo.key, height: 300 %>
         <div class="links">
           <%= link_to "Delete",
@@ -50,8 +45,10 @@
       </div>
 
       <div class="bookings" style="width: 300px; margin: 0 auto;">
-        <h2>Book the Vehicule</h2>
-        <br>
+        <h2>Book this Vehicule</h2>
+        <div class="titles">
+          <span>Price</span><p><%= "#{@car.price} € per day" %></p>
+        </div>
         <%= simple_form_for [@car, @reservation] do |f| %>
           <%= f.input :started_date, as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "YYYY-MM-DD" %>
           <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "YYYY-MM-DD" %>
