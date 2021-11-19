@@ -88,12 +88,16 @@
                     <% else  %>
                       <p id="confirm" class= "btn btn-warning"><%= reservation.status %></p>
                     <% end %>
+                    <% if reservation.status != "accepted" %>
                     <h2 id="master" class="btn btn-info"> <%= link_to "confirm", confirm_reservation_path(reservation),
                     method: :post %>
                     </h2>
+                    <% end %>
+                    <% if reservation.status != "canceled" %>
                     <h2 id="masterr" class="btn btn-danger"> <%= link_to "refuse booking", refuse_reservation_path(reservation),
                     method: :post %>
                     </h2>
+                    <% end %>
                     <p><%= reservation.total %> days</p>
                   </div>
                 <% reservation.price = reservation.car.price * reservation.total %>
