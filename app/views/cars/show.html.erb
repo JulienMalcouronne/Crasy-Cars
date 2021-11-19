@@ -45,12 +45,13 @@
           <%= link_to "Back", cars_path %>
         </div>
       </div>
-
+      <% if @car.user.id != current_user.id %>
       <div class="bookings" style="width: 300px; margin: 0 auto;">
         <h2>Book this Vehicule</h2>
         <div class="titles">
           <span>Price</span><p><%= "#{@car.price} € per day" %></p>
         </div>
+
         <div data-controller='flatpickr'>
           <%= simple_form_for [@car, @reservation] do |f| %>
             <%= f.input :started_date, as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "YYYY-MM-DD" %>
@@ -60,7 +61,9 @@
               <%= f.button :submit, "GO !", class: "btn btn-primary", style: "width: 100%; color: aliceblue; background-color: #C25C32; border: none" %>
             </div>
           <% end %>
+        <% end %>
         </div>
+
       </div>
     </div>
   </div>
