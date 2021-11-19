@@ -59,15 +59,21 @@
    <ul class="cards">
     <% current_user.cars.each do |car| %>
       <% car.reservations.each do |reservation| %>
+      <% reservation.total = (reservation.end_date - reservation.started_date) / 60000 %>
         <div class="card-trip mt-3" >
           <img src="<%= cl_image_path reservation.car.photo.key, height: 300 %>" alt="">
           <div class="card-trip-infos">
             <div>
-              <% reservation.total = (reservation.end_date - reservation.started_date) / 60000 %>
               <h2><%= link_to reservation.car.name, car_reservation_path(reservation.car, reservation) %></h2>
               <p><%= reservation.started_date %></p>
               <p><%= reservation.end_date %></p>
-              <p><%= reservation.status %></p>
+              <% if reservation.status == "confirmed" %>
+              <p class= "btn btn-success"><%= reservation.status %></p>
+              <% elsif reservation.status == "canceled" %>
+              <p class= "btn btn-danger"><%= reservation.status %></p>
+              <% else  %>
+              <p class= "btn btn-warning"><%= reservation.status %></p>
+              <% end %>
               <p><%= reservation.total %> days</p>
             </div>
           <% reservation.price = reservation.car.price * reservation.total %>
