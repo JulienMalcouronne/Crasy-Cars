@@ -33,10 +33,12 @@
         <h2><%= @car.name %></h2>
         <%= image_tag cl_image_path @car.photo.key, height: 300 %>
         <div class="links">
+        <% if policy(@car).destroy? %>
           <%= link_to "Delete",
             car_path(@car),
             method: :delete,
             data: { confirm: "Are you sure?" } %>
+        <%end%>
           <% if policy(@car).edit? %>
           <%= link_to "Update", edit_car_path(@car) %>
                   <% end %>

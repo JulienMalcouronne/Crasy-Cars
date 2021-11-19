@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :reservations, only: [:destroy] do
     member do
       post :confirm
+      post :refuse
     end
   end
   get "/dashboard", to: "pages#dashboard"
