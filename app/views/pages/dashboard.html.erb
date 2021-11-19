@@ -41,54 +41,6 @@
                     <% end  %>
                 </div>
 
-
-    <h2>Find bellow all your cars:</h2>
-    <ul class="cards">
-      <% @user.cars.each do |car| %>
-      <div class="card-trip mt-3" >
-        <% if car.photo.attached?%>
-          <img src="<%= cl_image_path car.photo.key, height: 300 %>" alt="">
-          <div class="card-trip-infos">
-            <div>
-               <h2><%= link_to car.name, car_path(car[:id]) %></h2>
-                <p class="card-summary mt-2 mr-1"><%= car.summary %></p>
-            </div>
-          <h2 class="card-trip-pricing"><%= car.price %>$/day</h2>
-            <% if car.user.avatar.attached? %>
-                  <img src="<%= cl_image_path car.user.avatar.key, height: 30 %>" alt="" class="card-trip-user avatar-bordered avatar">
-            <% else %>
-                  <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80" class="card-trip-user avatar-bordered" />
-            <% end  %>
-          </div>
-        <% end %>
-        </div>
-      <% end %>
-    </ul>
-  </div>
-
-
-<h2>Find bellow all your cars reserved: </h2>
-   <ul class="cards">
-    <% current_user.cars.each do |car| %>
-      <% car.reservations.each do |reservation| %>
-      <% reservation.total = (reservation.end_date - reservation.started_date) / 60000 %>
-        <div class="card-trip mt-3" >
-          <img src="<%= cl_image_path reservation.car.photo.key, height: 300 %>" alt="">
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= link_to reservation.car.name, car_reservation_path(reservation.car, reservation) %></h2>
-              <p>From <%= reservation.started_date.strftime('%d-%m-%Y') %> to <%= reservation.end_date.strftime('%d-%m-%Y') %></p>
-              <p><%= reservation.total %> days</p>
-              <% if reservation.status == "accepted" %>
-                <p id="confirm" class= "btn btn-success"><%= reservation.status %></p>
-              <% elsif reservation.status == "canceled" %>
-                <p id="confirm" class= "btn btn-danger"><%= reservation.status %></p>
-              <% else  %>
-                <p id="confirm" class= "btn btn-warning"><%= reservation.status %></p>
-              <% end %>
-                <h2 id="master" class="btn btn-success"> <%= link_to "confirm", confirm_reservation_path(reservation),
-              method: :post %>
-              </h2>
               <% end %>
             </div>
           <% end %>
