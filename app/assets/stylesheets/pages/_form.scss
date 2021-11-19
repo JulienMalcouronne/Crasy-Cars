@@ -1,13 +1,15 @@
 .creating{
   display: flex;
+  border-radius: 5px;
     label{
       display: flex;
-      justify-content:flex-start
+      justify-content:flex-start;
       }
     input{
       display: flex;
       justify-content:flex-start;
       width: 242px;
+
     }
 }
 
@@ -25,7 +27,7 @@ margin-bottom: 40px;
   width: 242px;
   background-color: #0F1D2F;
   padding: 10px;
-  border-radius: 15px;
+  border-radius: 5px;
   border: 1px solid #0F1D2F;
   margin: 3px;
   opacity: .75;
@@ -63,9 +65,35 @@ margin-bottom: 40px;
 
 .form-select.select.optional{
   width: 242px;
+  border-radius: 5px;
 }
 
 .text.optional{
   padding-left: 0px;
   margin-bottom: 1spx;
+  border-radius: 5px;
+}
+
+#car_name{
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+}
+
+#car_summary{
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+}
+
+#car_price{
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+}
+
+#car_capacity{
+  height: 40px;
+  border-radius: 5px;
+  border: none;
 }
