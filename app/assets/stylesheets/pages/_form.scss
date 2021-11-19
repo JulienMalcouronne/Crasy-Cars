@@ -22,17 +22,20 @@ align-items: flex-start;
 margin-bottom: 40px;
 
 .btn-primary{
-  border-radius: 4px;
+  width: 242px;
+  background-color: #0F1D2F;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid #0F1D2F;
+  margin: 3px;
+  opacity: .75;
   display: flex;
+  color: aliceblue;
   justify-content: center;
-  background-color: transparent;
   &:hover{
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspectiv(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 5px 5px 5px 5px yellow;
-  position: relative;
+    border: 1px #0F1D2F solid;
+    transition: 0.3s ease;
+    opacity: 1;
   }
 }
 
@@ -49,7 +52,7 @@ margin-bottom: 40px;
 }
 
 .wrapping{
-  background-image: url(https://cdn.pixabay.com/photo/2020/08/19/12/29/car-5500794_1280.jpg);
+  background-image: url(https://s2.gaming-cdn.com/images/products/8701/screenshot/forza-horizon-5-pc-xbox-one-xbox-series-xs-pc-xbox-one-xbox-serie-x-s-game-microsoft-store-wallpaper-3.jpg);
   background-repeat:no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -60,4 +63,9 @@ margin-bottom: 40px;
 
 .form-select.select.optional{
   width: 242px;
+}
+
+.text.optional{
+  padding-left: 0px;
+  margin-bottom: 1spx;
 }
